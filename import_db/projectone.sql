@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2019 at 11:56 AM
+-- Generation Time: Jul 15, 2019 at 12:13 PM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -176,7 +176,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `image`, `email_verified_at`, `password`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Kelvin Tryanto', 'kelvin.tryanto@gmail.com', 'default.jpg', NULL, '$2y$10$EnxiaALmmJu1gUxHjsNEHOq9NPKUgsMvxn58FP9UVUS6oecIYq57C', '1', NULL, '2019-07-15 00:35:08', '2019-07-15 00:35:08'),
-(2, 'Member Satu', 'member1@gmail.com', 'default.jpg', NULL, '$2y$10$HHx8gqBw6KK6zzdYKsRLC.fNmqwvHb9lnCclONEFGEQ3wEpahsvPi', '2', NULL, '2019-07-15 00:35:49', '2019-07-15 00:35:49');
+(2, 'Member Satu', 'member1@gmail.com', 'default.jpg', NULL, '$2y$10$HHx8gqBw6KK6zzdYKsRLC.fNmqwvHb9lnCclONEFGEQ3wEpahsvPi', '2', NULL, '2019-07-15 00:35:49', '2019-07-15 00:35:49'),
+(3, 'Admin', 'admin@gmail.com', 'default.jpg', NULL, '$2y$10$GPzd4jafdswj.yL98tUclenxqHmWiQqS76jntcdEMMjx4/NKY5Ntm', '1', NULL, '2019-07-15 03:10:24', '2019-07-15 03:10:24'),
+(4, 'Member', 'member@gmail.com', 'default.jpg', NULL, '$2y$10$mAzlYjO9kdC0bXoJ..TkDudxDDUTvnIAVJN1fTwQgKixU3XVtSKLK', '2', NULL, '2019-07-15 03:12:08', '2019-07-15 03:12:08');
 
 --
 -- Indexes for dumped tables
@@ -263,7 +265,7 @@ ALTER TABLE `submenu`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
