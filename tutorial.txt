@@ -1,0 +1,136 @@
+1. Bagaimana caranya membuat address laraveltrial.me supaya bisa diketikkan dalam address?
+   -buka D://xampp/apache/conf/extra/httpd-vhosts.conf file untuk menambahkan line berikut
+
+    <VirtualHost *:80>
+        DocumentRoot "D:/xampp/htdocs"
+        ServerName localhost (*ini yang diketikkan dalam file hosts)
+    </VirtualHost>
+
+    <VirtualHost *:80>
+        DocumentRoot "D:/xampp/htdocs/laravel_trial/public"
+        ServerName laraveltrial.me (*ini yang diketikkan dalam file hosts)
+    </VirtualHost>
+
+
+   -Buka notepad dan RUN AS ADMINISTRATOR => penting karena tidak akan bisa disave jika tidak menggunakan RUN AS ADMINISTRATOR
+   -Buka C://Windows/System32/drivers/etc/hosts file dalam notepad
+    - tambahkan di baris paling bawah 127.0.0.1 localhost
+    - tambahkan di baris paling bawah 127.0.0.1 laraveltrial.me (terkadang dot yang digunakan berpengaruh, dapat gunakan .test, .dev)
+    - jangan lupa sebelum buka address, restart xampp
+
+2. Jenis Route yang digunakan dalam laravel yaitu :
+   1) Route::get
+   2) Route::post
+   3) Route::delete
+   4) Route::any
+   5) Route::put
+   6) Route::match
+   7) Route::resource
+
+3. 2 Cara Routing pada Laravel :
+   - Basic Routing
+     -pada folder routes/web.php dapat ditulis seperti di bawah ini
+        Route::get('/about', function () {
+            return view('pages.about');
+        });
+
+   - Controllers
+     -buat controllers dengan syntax berikut
+        php artisan make:controller [NamaController tanpa kurung siku]
+     -buka folder app/Http/Controllers
+     -pastikan Controller yang dibuat telah tersedia
+     -contoh pembuatan controller dengan nama Pages Controller
+        php artisan make:controller PagesController
+     -penulisan pada routes/web.php adalah
+        Route::get('/', 'PagesController@index');
+     -penulisan pada Controller sebagai berikut di dalam class
+        public function index()
+        {
+            return view('pages.index');
+            // return 'INDEX';
+        }
+
+4. Cara memanggil APP_NAME dalam .env :
+   -pilih page yang mau menampilkan app_name dalam .env
+   -buka dua bracket "{{ }}"
+   -isi bracket dengan {{config('app_name','jika kosong akan digantikan dengan ini')}}
+
+5. Bagaimana cara install Laravel Blade Snippets?
+   -ctrl+p pada visual studio code
+   -ketik "ext install laravel blade snippets"
+   -install Laravel Blade Snippets
+
+6. Bagaimana penyederhanaan framework Laravel terhadap pemanggilan variable php?
+   -penulisan <?php echo $title ?> atau <?= $title ?>
+   -disederhanakan menjadi {{$title}}
+   -pemanggilannya simple hanya menggunakan 2 brackets saja
+
+7. Bagaimana cara memanggil link rel pada Laravel?
+   - <link rel="stylesheet" href="{{asset('css/app.css')}}">
+   - menggunakan 2 bracket lalu pemanggil asset
+
+8. Apakah Bootstrap sudah ter-include dalam Framework Laravel?
+   - Ya, sudah terinclude dalam node module pada saat install laravel pertama kali
+
+9. Langkah Pertama dalam Install Laravel :
+   1) Install composer
+   2) Install Github
+   3) Setting Git pada Visual Studio code
+   4) Buka Terminal dengan cara ctrl+`
+   5) Buka Document Root dan ketik
+      composer create-project laravel/laravel [nama_app]
+      contoh : composer create-project laravel/laravel laraveltrial
+
+10. Apa kegunaan npm install?
+    1) untuk melengkapi library yang perlu upgrade pada file package.json
+    2) kita dapat melihat beberapa petunjuk dependencies yang perlu diupgrade pada package.json yang mempunyai tanda ^
+    3) tidak semua dependencies perlu diupgrade, tergantung pada kebutuhan yang kita gunakan, terkadang ada saja package yang tergantung pada library tertentu
+
+11. Bagaimana update npm version pada terminal?
+    1) npm install -g npm
+    2) cara cek versi npm : npm -v
+    3) last recent update on 4 Juli 2019 : v6.10.0
+
+12. Bagaimana cara re-compile asset pada laravel?
+    1) Terkadang kita mengganti style pada _variable.scss dan tidak ada perubahan pada browser
+    2) Hal ini dikarenakan kita harus compile kembali asset yang kita rubah pada terminal, caranya di bawah ini
+    3) npm run development atau npm run dev
+    4) supaya npm run dev ini tidak diketik berkali-kali maka tulislah npm run watch
+    5) jadi ketika ada perubahan pada style, kita tidak perlu mengetik npm berkali kali pada terminal
+
+13. Bagaimana cara membuat controller dan model pada terminal?
+    1) membuat controller : php artisan make:controller [nama_controller] --resource //resource untuk membuat index, create, edit, delete, update, destroy
+    2) membuat model : php artisan make:model [nama_model] -m
+       -m berfungsi untuk migration
+
+14. Bagaimana cara membuat migration berjalan pada laravel?
+    php artisan migrate
+
+15. Bagaimana cara mengetes insert data pada database?
+    1) php artisan tinker
+    2) App\Post::count(); //untuk menghitung data row pada database
+    3) $post = new App\Post(); //untuk membuat post baru
+    4) $post->title = 'Post One'; //membuat post pada column title
+    5) $post->body = 'This is post body'; //membuat post baru pada column body
+    6) $post->save(); //sampai muncul true
+    7) untuk keluar ketik quit
+
+16. Bagaimana cara memeriksa routing list pada laravel?
+    php artisan route:list
+
+17. Bagaimana cara membuat form dalam Laravel?
+    1) buka laravel collective pada web browser
+    2) baca dokumentasi dari github laravelcollective
+    3) https://github.com/LaravelCollective/docs/blob/5.6/html.md
+
+18. Bagaimana cara membuat ck-editor dalam laravel?
+    baca dokumentasi https://github.com/UniSharp/laravel-ckeditor
+
+19. Bagaimana cara menghubungkan public dengan storage?
+    php artisan storage:link
+
+20. Bagaimana cara install laravel untuk pertama kalinya?
+    1) composer create-project laravel/laravel [project-name]
+    2) composer require "laravelcollective/html"
+    3) composer require unisharp/laravel-ckeditor
+       untuk membuat text tools pada textarea
