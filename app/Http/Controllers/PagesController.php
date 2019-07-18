@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\UserMenu;
-
 class PagesController extends Controller
 {
     public function __construct()
@@ -15,22 +12,20 @@ class PagesController extends Controller
     public function index()
     {
         $title = 'My Profile';
-        return view('/pages/profile')->with(['title' => $title]);
+        return view('pages.profile')->with(['title' => $title]);
     }
 
-    public function profile()
+    public function editprofile()
     {
-        $title = 'My Profile';
-        return view('/pages/profile')->with(['title' => $title]);
+        $title = 'Edit Profile';
+        return view('user.edit')->with(['title' => $title]);
     }
 
     public function menu()
-    {
-        return view('pages/menu');
-    }
+    { }
 
     public function about()
     {
-        return view('pages/about');
+        return view('pages.about');
     }
 }

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Menu;
 
-class ProfileController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $title = 'Edit Profile';
-        return view('user/edit')->with(['title' => $title]);
+        $menu = Menu::all();
+        $title = 'Menu Management';
+        return view('menu.index')->with(['title' => $title, 'menu' => $menu]);
     }
 
     /**
@@ -24,7 +26,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+        //tidak perlu, karena tidak membuka page create yang baru
     }
 
     /**
@@ -35,7 +37,15 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'menu' => 'required'
+        ]);
+
+        $menu = new Menu();
+        $menu->title = $request->input('menu');
+        $menu->save();
+
+        return redirect('/menu')->with('success', 'Menu Created');
     }
 
     /**
@@ -69,7 +79,15 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'menu' => 'required'
+        ]);
+
+        $menu = Menu::find($id);
+        $menu->title = $request->input('menu');
+        $menu->save();
+
+        return redirect('/menu')->with('success', 'Menu Updated');
     }
 
     /**
@@ -80,6 +98,9 @@ class ProfileController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $menu = Menu::find($id);
+
+        $menu->delete();
+        return redirect('/menu')->with('success', 'Menu Deleted');
     }
 }

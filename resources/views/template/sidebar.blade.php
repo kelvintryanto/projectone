@@ -45,11 +45,17 @@
     @endphp
 
     @foreach ($submenu as $sm)
+    @if ($title == $sm['title'])
+        <li class="nav-item active border-left-danger">
+    @else
         <li class="nav-item">
+    @endif
             <a class="nav-link" href="{{$sm['url']}}">
-            <i class="{{$sm['icon']}}"></i>
-            <span>{{$sm['title']}}</span></a>
+                    <i class="{{$sm['icon']}}"></i>
+                <span>{{$sm['title']}}</span>
+            </a>
         </li>
+
     @endforeach
 
     <!-- Divider -->

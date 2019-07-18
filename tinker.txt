@@ -1,0 +1,72 @@
+$menu = new App\Submenu()
+$menu->menu_id = 1
+$menu->title = 'Dashboard'
+$menu->url = '/home'
+$menu->icon = 'fa fa-fw fa-tachometer-alt'
+$menu->is_active = 1
+$menu->save()
+
+
+$menu = new App\Submenu()
+$menu->menu_id = 2
+$menu->title = 'My Profile'
+$menu->url = '/'
+$menu->icon = 'fa fa-fw fa-user'
+$menu->is_active = 1
+$menu->save()
+
+$menu = new App\Submenu()
+$menu->menu_id = 3
+$menu->title = 'Menu Management'
+$menu->url = '/menu'
+$menu->icon = 'fa fa-fw fa-folder'
+$menu->is_active = 1
+$menu->save()
+
+$menu = new App\Submenu()
+$menu->menu_id = 3
+$menu->title = 'Submenu Management'
+$menu->url = '/submenu'
+$menu->icon = 'fa fa-fw fa-folder-open'
+$menu->is_active = 1
+$menu->save()
+
+$menu = new App\Menu()
+$menu->title = 'Menu'
+$menu->save()
+
+$menu = new App\Submenu()
+$menu->menu_id = 2
+$menu->title = 'Edit Profile'
+$menu->url = '/edit'
+$menu->icon = 'fa fa-fw fa-user-edit'
+$menu->is_active = 1
+$menu->save()
+
+$role = new App\Role()
+$menu->menu_id = 2
+$menu->title = 'My Profile'
+$menu->url = '/'
+$menu->icon = 'fa fa-fw fa-user'
+$menu->is_active = 1
+$menu->save()
+
+$access = new App\Access()
+$access->role_id = 1
+$access->menu_id = 1
+$access->save()
+
+$access = new App\Access()
+$access->role_id = 1
+$access->menu_id = 2
+$access->save()
+
+$access = new App\Access()
+$access->role_id = 1
+$access->menu_id = 3
+$access->save()
+
+$access = new App\Access()
+$access->role_id = 2
+$access->menu_id = 2
+$access->save()

@@ -17,6 +17,12 @@
 
 Auth::routes();
 
+// PagesController
 Route::get('/', 'PagesController@index')->name('profile');
+Route::get('/editprofile', 'PagesController@editprofile')->name('editprofile');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/editprofile', 'ProfileController@index')->name('indexedit');
+
+//Menu Controller
+Route::resource('menu', 'MenuController');
+Route::resource('submenu', 'SubmenuController');
+Route::resource('users', 'UserController');
