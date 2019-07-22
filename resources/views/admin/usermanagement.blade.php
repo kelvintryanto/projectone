@@ -37,30 +37,53 @@
                         </td>
                         <td>
                             @if ($u->role_id != 1)
-                                <a href="#editMenu{{$u['id']}}" data-toggle="modal" style="font-size: 1.2em; color: orange;"><i class="fas fa-edit"></i></a>
-                                <a href="#deleteMenu{{$u['id']}}" data-toggle="modal" style="font-size: 1.2em; color: red;"><i class="fas fa-trash"></i></a>
+                                <a href="#editUser{{$u['id']}}" data-toggle="modal" style="font-size: 1.2em; color: orange;"><i class="fas fa-edit"></i></a>
+                                <a href="#deleteUser{{$u['id']}}" data-toggle="modal" style="font-size: 1.2em; color: red;"><i class="fas fa-trash"></i></a>
                             @endif
                         </td>
 
                         <!-- Modal Edit Menu -->
-                        <div class="modal fade" id="editMenu{{$u['id']}}" tabindex="-1" role="dialog" aria-labelledby="editMenu" aria-hidden="true">
+                        <div class="modal fade" id="editUser{{$u['id']}}" tabindex="-1" role="dialog" aria-labelledby="editUser" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editUser">Edit Menu</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    {!! Form::open(['action' => ['UserController@update',$u->id],'method'=>'PUT']) !!}
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="role" name="role" value="{{$u['role_id']}}">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-warning">Edit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal Delete Menu -->
+                        <div class="modal fade" id="deleteUser{{$u['id']}}" tabindex="-1" role="dialog" aria-labelledby="deleteUser" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="editMenu">Edit Menu</h5>
+                                            <h5 class="modal-title" id="deleteUser">Delete User</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        {!! Form::open(['action' => ['UserController@update',$u->id],'method'=>'PUT']) !!}
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" id="role" name="role" value="{{$u['role_id']}}">
-                                                </div>
-                                            </div>
+                                        <div class="modal-body">
+                                            <p>Are you sure want to delete user <b><?= $u['name']; ?></b> ?</p>
+                                        </div>
+                                        {!! Form::open(['action' => ['UserController@destroy',$u->id] ,'method'=>'DELETE']) !!}
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-warning">Edit</button>
+                                                <button type="submit" class="btn btn-danger" autofocus>Yes</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                                             </div>
                                         </form>
                                     </div>
