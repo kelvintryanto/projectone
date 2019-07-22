@@ -100,9 +100,10 @@ class SubmenuController extends Controller
 
         $submenu = Submenu::find($id);
         $submenu->title = $request->input('submenu');
+        $submenu->url = $request->input('url');
         $submenu->save();
 
-        return redirect('/menu')->with('success', 'Menu Updated');
+        return redirect('/submenu')->with('success', 'Submenu Updated');
     }
 
     /**

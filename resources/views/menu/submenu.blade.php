@@ -11,12 +11,12 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Submenu</th>
-                        <th scope="col">Menu</th>
-                        <th scope="col">Url</th>
-                        <th scope="col">Icon</th>
-                        <th scope="col">Active</th>
-                        <th scope="col">Action</th>
+                        <th>Submenu</th>
+                        <th>Menu</th>
+                        <th>Url</th>
+                        <th>Icon</th>
+                        <th>Active</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>

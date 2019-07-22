@@ -14,7 +14,10 @@
 
     {{-- Nav Item - Menu --}}
     @php
+        // mengambil role_id pada table user
         $role_id = Auth::user()->role_id;
+        //mengambil nama menu yang dapat diakses oleh user yang mempunyai role_id
+        //yang dijoin antara menu table dan access table
         $query = DB::table('menu')
                 ->join('access','menu.id','=','access.menu_id')
                 ->where('access.role_id','=',$role_id)
@@ -41,7 +44,6 @@
                 ->select('submenu.title','submenu.url','submenu.icon')
                 ->get();
         $submenu = json_decode($query,true)
-
     @endphp
 
     @foreach ($submenu as $sm)
